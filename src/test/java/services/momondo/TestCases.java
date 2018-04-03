@@ -1,13 +1,14 @@
-package momondo;
+package services.momondo;
 
 
-import momondo.pages.FlightsPage;
-import momondo.pages.LoginPage;
+import services.AppiumTestBase;
+import services.momondo.pages.FlightsPage;
+import services.momondo.pages.LoginPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 
-public class TestCases extends AppiumTestBase{
+public class TestCases extends AppiumTestBase {
     private LoginPage loginPage;
     private FlightsPage flightsPage;
 
@@ -15,7 +16,7 @@ public class TestCases extends AppiumTestBase{
     public void initPages() {
         loginPage = new LoginPage(driver);
         flightsPage = new FlightsPage(driver);
-        System.out.println("Pages Initialized");
+        System.out.println("Pages Are Initialized");
     }
 
     @BeforeGroups( groups = {"loginGroup"})
@@ -28,12 +29,12 @@ public class TestCases extends AppiumTestBase{
         flightsPage.goToFlightsSection();
     }
 
-    @Test(description = "Failure Login to Planeta Kino App", groups = {"loginGroup"}, priority = 1)
+    @Test(description = "Failure Login to Momondo App", groups = {"loginGroup"}, priority = 1)
     protected void failureLoginTest() {
         loginPage.failureLogin();
     }
 
-    @Test(description = "Successful Login to Planeta Kino App", groups = {"loginGroup"}, priority = 2)
+    @Test(description = "Successful Login to Momondo App", groups = {"loginGroup"}, priority = 2)
     protected void successLoginTest() {
         loginPage.successLogin();
     }

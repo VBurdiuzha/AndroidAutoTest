@@ -1,11 +1,12 @@
-package momondo;
+package services;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -14,11 +15,12 @@ public class AppiumTestBase {
 
     protected static AndroidDriver  driver;
 
+    @Parameters({"apk"})
     @BeforeTest(alwaysRun = true)
-    public void setUp() throws MalformedURLException {
+    public void setUp(String apk) throws MalformedURLException {
         File filePath = new File(System.getProperty("user.dir"));
         File appDir = new File(filePath, "/bin");
-        File app = new File(appDir, "momondo.apk");
+        File app = new File(appDir, apk);
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Google Pixel");

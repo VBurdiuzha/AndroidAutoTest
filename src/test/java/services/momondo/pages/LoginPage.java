@@ -1,11 +1,11 @@
-package momondo.pages;
+package services.momondo.pages;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.*;
-import momondo.MomondoVars;
+import services.momondo.MomondoVars;
 import org.openqa.selenium.support.PageFactory;
-import momondo.Tools;
+import services.Tools;
 import org.testng.Assert;
 import java.util.List;
 import java.util.concurrent.TimeUnit;

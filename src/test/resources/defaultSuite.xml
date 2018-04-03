@@ -1,6 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Full Mobile Test" verbose="1" group-by-instances="true">
     <test name="Momondo Tests" verbose="1">
+        <parameter name="apk" value="momondo.apk"/>
         <groups>
             <run>
                 <include name="loginGroup"/>
@@ -8,7 +9,7 @@
             </run>
         </groups>
         <classes>
-            <class name="momondo.TestCases"/>
+            <class name="services.momondo.TestCases"/>
         </classes>
     </test>
 </suite>
