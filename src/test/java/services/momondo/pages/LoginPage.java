@@ -18,14 +18,11 @@ public class LoginPage {
 
     public LoginPage(AndroidDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(new AppiumFieldDecorator(driver, 10, TimeUnit.SECONDS), this);
+        PageFactory.initElements(new AppiumFieldDecorator(driver, 5, TimeUnit.SECONDS), this);
     }
 
-
-    @WithTimeout(time = 1, unit = TimeUnit.MILLISECONDS)
     @AndroidFindBy(id = "tabProfile")
     private MobileElement userProfile;
-
 
     @AndroidFindBy(id = "connectWithEmailButton")
     private MobileElement emailLoginBotton;
@@ -42,6 +39,7 @@ public class LoginPage {
     @AndroidFindBy(id = "textinput_error")
     private MobileElement textInputError;
 
+    @WithTimeout(time = 10, unit = TimeUnit.SECONDS)
     @AndroidFindBy(id = "profileMenuHeader")
     private MobileElement profileMenu;
 
