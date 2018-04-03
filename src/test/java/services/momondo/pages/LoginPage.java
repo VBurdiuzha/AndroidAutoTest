@@ -22,12 +22,10 @@ public class LoginPage {
     }
 
 
-    @WithTimeout(time = 15, unit = TimeUnit.SECONDS)
+    @WithTimeout(time = 1, unit = TimeUnit.MILLISECONDS)
     @AndroidFindBy(id = "tabProfile")
     private MobileElement userProfile;
 
-    @AndroidFindBy(id = "profileMenuHeader")
-    private MobileElement profileHandler;
 
     @AndroidFindBy(id = "connectWithEmailButton")
     private MobileElement emailLoginBotton;
@@ -48,19 +46,19 @@ public class LoginPage {
     private MobileElement profileMenu;
 
     @AndroidFindBy(accessibility = "Navigate up")
-    private List<MobileElement> closeMessageBtn;
+    private List<MobileElement> navigateUpBtn;
 
     @HowToUseLocators(androidAutomation = CHAIN)
     @AndroidFindBys({
-            @AndroidBy(id = "toggleButton1"),
-            @AndroidBy(className = "android.widget.TextView")
+            @AndroidBy(id = "profileMenuHeader"),
+            @AndroidBy(id = "medallionTitle")
             })
-    private MobileElement oneWayFlight;
+    private MobileElement userNameTitle;
 
 
     public void openLoginPage() {
         userProfile.click();
-        profileHandler.click();
+        profileMenu.click();
         emailLoginBotton.click();
         Tools.waitForElementDisplayed(emailField);
         emailField.sendKeys(MomondoVars.email);
@@ -74,20 +72,20 @@ public class LoginPage {
     public void successLogin() {
         passwordField.clear();
         login(MomondoVars.password);
-        if (closeMessageBtn.size() != 0) {
-            closeMessageBtn.get(0).click();
-        }
+        Tools.clickIfElemPresent(navigateUpBtn);
         Tools.waitForElementDisplayed(profileMenu);
+        Assert.assertEquals(userNameTitle.getText(), MomondoVars.email);
+
     }
 
     public void failureLogin() {
         login(MomondoVars.wrongPassword);
         Assert.assertTrue(textInputError.getText().length() != 0);
-
     }
 
 
 }
+
 
 
 

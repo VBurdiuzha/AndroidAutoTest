@@ -39,9 +39,9 @@ public class TestCases extends AppiumTestBase {
         loginPage.successLogin();
     }
 
-    @Test(description = "Search Flight",  priority = 3, groups = {"flightsGroup"})
-    protected void flightTest() {
-        flightsPage.selectFlights();
+    @Test(description = "Search Flight", dependsOnMethods = {"successLoginTest"}, groups = {"flightsGroup"}, priority = 3)
+    protected void searchOneWayFlights() {
+        flightsPage.searchOneWayFlights();
     }
 
 }

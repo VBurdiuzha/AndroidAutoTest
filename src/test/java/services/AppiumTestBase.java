@@ -18,14 +18,12 @@ public class AppiumTestBase {
     @Parameters({"apk"})
     @BeforeTest(alwaysRun = true)
     public void setUp(String apk) throws MalformedURLException {
-        File filePath = new File(System.getProperty("user.dir"));
-        File appDir = new File(filePath, "/bin");
-        File app = new File(appDir, apk);
+        File app = new File(apk);
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Google Pixel");
         caps.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
-        caps.setCapability(MobileCapabilityType.FULL_RESET, "true");
+        //caps.setCapability(MobileCapabilityType.FULL_RESET, true);
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps);
         Tools.setDriver(driver);
     }

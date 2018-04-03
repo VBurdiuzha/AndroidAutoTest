@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Full Mobile Test" verbose="1" group-by-instances="true">
     <test name="Momondo Tests" verbose="1">
-        <parameter name="apk" value="momondo.apk"/>
+        <parameter name="apk" value="bin/momondo.apk"/>
         <groups>
             <run>
                 <include name="loginGroup"/>

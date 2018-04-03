@@ -2,13 +2,11 @@ package services.momondo.pages;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.pagefactory.AndroidBy;
-import io.appium.java_client.pagefactory.AndroidFindBys;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.pagefactory.HowToUseLocators;
+import io.appium.java_client.pagefactory.*;
 import services.Tools;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static io.appium.java_client.pagefactory.LocatorGroupStrategy.CHAIN;
@@ -30,15 +28,17 @@ public class FlightsPage {
     })
     private MobileElement oneWayFlight;
 
+    @AndroidFindBy(accessibility = "Navigate up")
+    private List<MobileElement> closeMessageBtn;
+
 
     public void goToFlightsSection() {
-        Tools.swipeRightToLeft(845,370, 122, 382);
+        Tools.swipeByCoordinates(845,370, 122, 382);
         Tools.waitForElementDisplayed(oneWayFlight);
-        oneWayFlight.click();
     }
 
-    public void selectFlights() {
-        System.out.println("In flights section");
+    public void searchOneWayFlights() {
+        oneWayFlight.click();
     }
 
 
