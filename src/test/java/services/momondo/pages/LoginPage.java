@@ -7,8 +7,10 @@ import services.momondo.MomondoVars;
 import org.openqa.selenium.support.PageFactory;
 import services.Tools;
 import org.testng.Assert;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 import static io.appium.java_client.pagefactory.LocatorGroupStrategy.CHAIN;
 
 
@@ -25,7 +27,7 @@ public class LoginPage {
     private MobileElement userProfile;
 
     @AndroidFindBy(id = "connectWithEmailButton")
-    private MobileElement emailLoginBotton;
+    private MobileElement emailLoginButton;
 
     @AndroidFindBy(id = "emailEditText")
     private MobileElement emailField;
@@ -43,22 +45,24 @@ public class LoginPage {
     private MobileElement profileMenu;
 
     @AndroidFindBy(accessibility = "Navigate up")
-    private List<MobileElement> navigateUpBtn;
+    private MobileElement navigateUpBtn;
 
+    @AndroidFindBy(id = "welcomeImageView")
+    private List<MobileElement> welcomeTitle;
 
     @WithTimeout(time = 10, unit = TimeUnit.SECONDS)
     @HowToUseLocators(androidAutomation = CHAIN)
     @AndroidFindBys({
             @AndroidBy(id = "profileMenuHeader"),
             @AndroidBy(id = "medallionTitle")
-            })
+    })
     private MobileElement userNameTitle;
 
 
     public void openLoginPage() {
         userProfile.click();
         profileMenu.click();
-        emailLoginBotton.click();
+        emailLoginButton.click();
         Tools.waitForElementDisplayed(emailField);
         emailField.sendKeys(MomondoVars.EMAIL);
     }
@@ -71,7 +75,9 @@ public class LoginPage {
     public void successLogin() {
         passwordField.clear();
         login(MomondoVars.PASSWORD);
-        Tools.clickIfElemPresent(navigateUpBtn);
+        if (Tools.elementsArePresent(welcomeTitle)) {
+            navigateUpBtn.click();
+        }
         Tools.waitForElementDisplayed(profileMenu);
         Assert.assertEquals(userNameTitle.getText(), MomondoVars.EMAIL);
 

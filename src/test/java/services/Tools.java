@@ -3,6 +3,8 @@ package services;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,16 +29,18 @@ public class Tools {
     }
 
     public static void swipeByCoordinates(Integer startX, Integer startY, Integer endX, Integer endY) {
-        new TouchAction(driver).longPress(point(startX, startY)).moveTo(point(endX,endY)).release().perform();
+        new TouchAction(driver).longPress(point(startX, startY)).moveTo(point(endX, endY)).release().perform();
     }
 
     public static void waitForElementDisplayed(WebElement element) {
-        new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOf(element));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(element));
     }
 
-    public static void clickIfElemPresent(List<MobileElement> elements) {
+    public static boolean elementsArePresent(List<MobileElement> elements) {
         if (elements.size() != 0) {
-            elements.get(0).click();
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -46,5 +50,6 @@ public class Tools {
         } catch (InterruptedException e) {
         }
     }
+
 
 }
