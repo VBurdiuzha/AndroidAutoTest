@@ -5,7 +5,6 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.*;
 import services.Tools;
 import org.openqa.selenium.support.PageFactory;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -28,9 +27,6 @@ public class FlightsPage {
     })
     private MobileElement oneWayFlight;
 
-    @AndroidFindBy(accessibility = "Navigate up")
-    private List<MobileElement> closeMessageBtn;
-
 
     public void goToFlightsSection() {
         Tools.swipeByCoordinates(845,370, 122, 382);
@@ -39,6 +35,7 @@ public class FlightsPage {
 
     public void searchOneWayFlights() {
         oneWayFlight.click();
+        //to be continued
     }
 
 

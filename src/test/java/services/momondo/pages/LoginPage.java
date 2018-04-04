@@ -39,13 +39,14 @@ public class LoginPage {
     @AndroidFindBy(id = "textinput_error")
     private MobileElement textInputError;
 
-    @WithTimeout(time = 10, unit = TimeUnit.SECONDS)
     @AndroidFindBy(id = "profileMenuHeader")
     private MobileElement profileMenu;
 
     @AndroidFindBy(accessibility = "Navigate up")
     private List<MobileElement> navigateUpBtn;
 
+
+    @WithTimeout(time = 10, unit = TimeUnit.SECONDS)
     @HowToUseLocators(androidAutomation = CHAIN)
     @AndroidFindBys({
             @AndroidBy(id = "profileMenuHeader"),
@@ -59,7 +60,7 @@ public class LoginPage {
         profileMenu.click();
         emailLoginBotton.click();
         Tools.waitForElementDisplayed(emailField);
-        emailField.sendKeys(MomondoVars.email);
+        emailField.sendKeys(MomondoVars.EMAIL);
     }
 
     private void login(String pwd) {
@@ -69,15 +70,15 @@ public class LoginPage {
 
     public void successLogin() {
         passwordField.clear();
-        login(MomondoVars.password);
+        login(MomondoVars.PASSWORD);
         Tools.clickIfElemPresent(navigateUpBtn);
         Tools.waitForElementDisplayed(profileMenu);
-        Assert.assertEquals(userNameTitle.getText(), MomondoVars.email);
+        Assert.assertEquals(userNameTitle.getText(), MomondoVars.EMAIL);
 
     }
 
     public void failureLogin() {
-        login(MomondoVars.wrongPassword);
+        login(MomondoVars.WRONG_PASSWORD);
         Assert.assertTrue(textInputError.getText().length() != 0);
     }
 

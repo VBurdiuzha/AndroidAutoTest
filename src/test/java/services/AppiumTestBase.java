@@ -13,12 +13,12 @@ import java.net.URL;
 
 public class AppiumTestBase {
 
-    protected static AndroidDriver  driver;
+    protected static AndroidDriver driver;
 
-    @Parameters({"apk"})
+    @Parameters("apkPath")
     @BeforeTest(alwaysRun = true)
-    public void setUp(String apk) throws MalformedURLException {
-        File app = new File(apk);
+    public void setUp(String apkPath) throws MalformedURLException {
+        File app = new File(apkPath);
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Google Pixel");
