@@ -66,8 +66,8 @@ public class LoginPage {
 
     private void login(String pwd) {
         emailField.clear();
-        passwordField.clear();
         emailField.sendKeys(MomondoVars.EMAIL);
+        passwordField.clear();
         passwordField.sendKeys(pwd);
         loginButton.click();
     }
