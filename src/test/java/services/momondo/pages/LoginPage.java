@@ -7,10 +7,8 @@ import services.momondo.MomondoVars;
 import org.openqa.selenium.support.PageFactory;
 import services.Tools;
 import org.testng.Assert;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import static io.appium.java_client.pagefactory.LocatorGroupStrategy.CHAIN;
 
 
@@ -64,16 +62,17 @@ public class LoginPage {
         profileMenu.click();
         emailLoginButton.click();
         Tools.waitForElementDisplayed(emailField);
-        emailField.sendKeys(MomondoVars.EMAIL);
     }
 
     private void login(String pwd) {
+        emailField.clear();
+        passwordField.clear();
+        emailField.sendKeys(MomondoVars.EMAIL);
         passwordField.sendKeys(pwd);
         loginButton.click();
     }
 
     public void successLogin() {
-        passwordField.clear();
         login(MomondoVars.PASSWORD);
         if (Tools.elementsArePresent(welcomeTitle)) {
             navigateUpBtn.click();

@@ -1,12 +1,12 @@
 package services.momondo;
 
+
 import services.AppiumTestBase;
 import services.momondo.pages.FlightsPage;
 import services.momondo.pages.LoginPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
-
 
 public class TestCases extends AppiumTestBase {
     private LoginPage loginPage;
@@ -19,12 +19,12 @@ public class TestCases extends AppiumTestBase {
         System.out.println("Pages Are Initialized");
     }
 
-    @BeforeGroups(groups = {"loginGroup"})
+    @BeforeGroups( groups = {"loginGroup"})
     protected void loginPreparation() {
         loginPage.openLoginPage();
     }
 
-    @BeforeGroups(groups = {"flightsGroup"})
+    @BeforeGroups( groups = {"flightsGroup"})
     protected void goToFlightSection() {
         flightsPage.goToFlightsSection();
     }
