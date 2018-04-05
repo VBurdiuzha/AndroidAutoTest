@@ -21,10 +21,8 @@ public class AppiumTestBase {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Google Pixel");
-        // capability for installing apk from bin folder
-       // File app = new File("bin/momondo.apk");
+        //File app = new File("bin/momondo.apk");
         //caps.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
-        // capability for already installed app
         caps.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, appPackage);
         caps.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, appActivity);
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps);
