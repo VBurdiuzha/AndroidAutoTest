@@ -5,6 +5,8 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.*;
 import services.Tools;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import static io.appium.java_client.pagefactory.LocatorGroupStrategy.CHAIN;
 
@@ -18,12 +20,16 @@ public class FlightsPage {
         PageFactory.initElements(new AppiumFieldDecorator(driver, 5, TimeUnit.SECONDS), this);
     }
 
+
     @HowToUseLocators(androidAutomation = CHAIN)
     @AndroidFindBys({
             @AndroidBy(id = "toggleButton1"),
             @AndroidBy(className = "android.widget.TextView")
     })
+
+    @AndroidFindBy(id = "welcomeImageView")
     private MobileElement oneWayFlight;
+
 
 
     public void goToFlightsSection() {
@@ -35,7 +41,6 @@ public class FlightsPage {
         oneWayFlight.click();
         //to be continued
     }
-
 
 }
 
