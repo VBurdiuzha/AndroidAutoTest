@@ -6,7 +6,6 @@ import io.appium.java_client.pagefactory.*;
 import services.Tools;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import static io.appium.java_client.pagefactory.LocatorGroupStrategy.CHAIN;
 
@@ -27,7 +26,6 @@ public class FlightsPage {
             @AndroidBy(className = "android.widget.TextView")
     })
 
-    @AndroidFindBy(id = "welcomeImageView")
     private MobileElement oneWayFlight;
 
 
